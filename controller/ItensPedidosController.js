@@ -13,9 +13,9 @@ async function list(req, res) {
 
 async function select(req, res) {
     try {
-        // const id = req.params.id;
-        // const response = await ItensPedidos.findByPk(id);
-        // res.json(response);
+        const ped_id = req.params.id;
+        const response = await ItensPedidos.findAll({ where: { ped_id } });
+        res.json(response);
     }
     catch (error) {
         console.error('Erro ao listar item_pedido:', error);
@@ -50,12 +50,5 @@ async function update(req, res) {
         res.status(500).json({ erro: error.message });
     }
 }
-
-// async function del(req, res) {
-//     const ped_id = req.params.id;
-
-//     const response = await ItensPedidos.destroy({where: {ped_id}});
-//     res.json(`Linhas alteradas: ${response}`);
-// }
 
 export default { list, select, create, update };

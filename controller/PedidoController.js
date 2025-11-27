@@ -38,8 +38,8 @@ async function create(req, res) {
 
 async function update(req, res) {
     try {
-        const status = req.params.status;
-        const com_id = req.params.com_id;
+        const status = req.body.status;
+        const com_id = req.body.com_id;
 
         const ped_id = req.params.id;
 
