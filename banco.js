@@ -1,6 +1,6 @@
 import { Sequelize, DataTypes } from 'sequelize';
 const sequelize = new Sequelize('Banco_Cafeteria', 'postgres', 'postgres', {
-    host: 'localhost',
+    host: 'database-1.cvmu0ukcqmtc.us-east-2.rds.amazonaws.com',
     port: 5432,
     dialect: 'postgres',
     define: {
@@ -8,5 +8,6 @@ const sequelize = new Sequelize('Banco_Cafeteria', 'postgres', 'postgres', {
         freezeTableName: true,
     }
 });
+
 
 export default sequelize;
