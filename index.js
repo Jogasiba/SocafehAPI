@@ -28,6 +28,7 @@ app.put('/usuario/:id', autenticarToken, usuario.update);
 app.delete('/usuario/:id', autenticarToken, usuario.del);
 app.post('/usuario/:id', usuario.definirSenha);
 app.get('/login/:login/:senha', usuario.login);
+app.get('/teste', usuario.teste);
 
 app.get('/pedido', autenticarToken, pedido.list);
 app.post('/pedido', autenticarToken, pedido.create);

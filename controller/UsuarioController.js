@@ -115,8 +115,6 @@ async function login(req, res){
     try {
         const { login, senha } = req.params;
 
-        console.log(login, senha);
-
         const status = await verificaLogin(login, senha);
         res.status(status)
 
@@ -133,4 +131,13 @@ async function login(req, res){
     }
 }
 
-export default { list, select, create, update, del, definirSenha, login };
+async function teste(req, res) {
+    try{
+        return res.json("entrou")
+    }
+    catch{
+        res.status(500).json({ erro: error.message });
+    }
+}
+
+export default { list, select, create, update, del, definirSenha, login, teste };
