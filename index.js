@@ -22,7 +22,7 @@ app.use(cors());
 dotenv.config();
 
 app.get('/usuario', autenticarToken, usuario.list);
-app.post('/usuario', autenticarToken, usuario.create);
+app.post('/usuario', usuario.create);
 app.get("/usuario/:id", autenticarToken, usuario.select);
 app.put('/usuario/:id', autenticarToken, usuario.update);
 app.delete('/usuario/:id', autenticarToken, usuario.del);
