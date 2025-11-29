@@ -15,3 +15,5 @@ const sequelize = new Sequelize('bancoSocafeh', 'postgres', 'Socafeh123', {
         freezeTableName: true,
     }
 });
+
+export default sequelize;
