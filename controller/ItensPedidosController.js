@@ -66,9 +66,9 @@ async function update(req, res) {
 async function del(req, res) {
     try {
         const ite_id = req.params.item;
-        const com_id = req.params.comanda;
+        const ped_id = req.params.pedido;
         
-        const response = await ItensPedidos.destroy({where: {ite_id, com_id}});
+        const response = await ItensPedidos.destroy({where: {ite_id, ped_id}});
         res.json(`Linhas alteradas: ${response}`);
     }
     catch (error) {

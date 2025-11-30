@@ -41,8 +41,8 @@ app.get('/itensPedidos', autenticarToken, itensPedidos.list);
 app.post('/itensPedidos', autenticarToken, itensPedidos.create);
 app.get('/itensPedidos/:id', autenticarToken, itensPedidos.select);
 app.put('/itensPedidos/:id', autenticarToken, itensPedidos.update);
-app.delete('/itensPedidos/:item/:comanda', autenticarToken, itensPedidos.del);
-app.delete('/itemLivre/:id', autenticarToken, itensPedidos.selectItem);
+app.delete('/itensPedidos/:item/:pedido', autenticarToken, itensPedidos.del);
+app.get('/itemLivre/:id', autenticarToken, itensPedidos.selectItem);
 
 app.get('/item', autenticarToken, item.list);
 app.post('/item', autenticarToken, item.create);
