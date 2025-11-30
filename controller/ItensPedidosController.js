@@ -23,6 +23,18 @@ async function select(req, res) {
     }
 }
 
+async function selectItem(req, res) {
+    try {
+        const ite_id = req.params.id;
+        const response = await ItensPedidos.findAll({ where: { ite_id } });
+        res.json(response);
+    }
+    catch (error) {
+        console.error('Erro ao listar item_pedido:', error);
+        res.status(500).json({ erro: error.message });
+    }
+}
+
 async function create(req, res) {
     try {
         const response = await ItensPedidos.create(req.body);
@@ -65,4 +77,4 @@ async function del(req, res) {
     }
 }
 
-export default { list, select, create, update, del };
+export default { list, select, create, update, selectItem, del };
