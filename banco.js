@@ -1,13 +1,16 @@
 import { Sequelize, DataTypes } from 'sequelize';
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const sequelize = new Sequelize('bancoSocafeh', 'postgres', 'Socafeh123', {
-    host: 'database-1.cvmu0ukcqmtc.us-east-2.rds.amazonaws.com',
+    host: process.env.DB_URL,
     port: 5432,
     dialect: 'postgres',
     dialectOptions: {
         ssl: {
             require: true,
-            rejectUnauthorized: false // evita erro de certificado
+            rejectUnauthorized: false
         }
     },
     define: {

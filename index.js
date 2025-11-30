@@ -22,13 +22,11 @@ app.use(cors());
 dotenv.config();
 
 app.get('/usuario', autenticarToken, usuario.list);
-app.post('/usuario', usuario.create);
+app.post('/usuario', autenticarToken, usuario.create);
 app.get("/usuario/:id", autenticarToken, usuario.select);
 app.put('/usuario/:id', autenticarToken, usuario.update);
 app.delete('/usuario/:id', autenticarToken, usuario.del);
-app.post('/usuario/:id', usuario.definirSenha);
 app.get('/login/:login/:senha', usuario.login);
-app.get('/teste', usuario.teste);
 
 app.get('/pedido', autenticarToken, pedido.list);
 app.post('/pedido', autenticarToken, pedido.create);
@@ -43,6 +41,7 @@ app.get('/itensPedidos', autenticarToken, itensPedidos.list);
 app.post('/itensPedidos', autenticarToken, itensPedidos.create);
 app.get('/itensPedidos/:id', autenticarToken, itensPedidos.select);
 app.put('/itensPedidos/:id', autenticarToken, itensPedidos.update);
+app.delete('/itensPedidos/:item/:comanda', autenticarToken, itensPedidos.del);
 
 app.get('/item', autenticarToken, item.list);
 app.post('/item', autenticarToken, item.create);

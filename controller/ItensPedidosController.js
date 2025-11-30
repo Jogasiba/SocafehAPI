@@ -51,4 +51,18 @@ async function update(req, res) {
     }
 }
 
-export default { list, select, create, update };
+async function del(req, res) {
+    try {
+        const ite_id = req.params.item;
+        const com_id = req.params.comanda;
+        
+        const response = await ItensPedidos.destroy({where: {ite_id, com_id}});
+        res.json(`Linhas alteradas: ${response}`);
+    }
+    catch (error) {
+        console.error('Erro ao deletar item de pedido:', error);
+        res.status(500).json({ erro: error.message });
+    }
+}
+
+export default { list, select, create, update, del };

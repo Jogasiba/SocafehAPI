@@ -68,38 +68,6 @@ async function del(req, res) {
     }
 }
 
-async function definirSenha(req, res) {
-    try {
-        var senha = req.body.senha;
-
-        const usu_id = req.params.id;
-
-        if (!usu_id) {
-            res.status(422).send('Código de Usuário obrigatório!')
-        }
-
-        const usuario = await Usuarios.findByPk(usu_id);
-        if (!usuario) {
-            res.status(404).send('Usuário não encontrado!')
-        }
-
-        if (!(senha.toString().length >= 6 && senha.toString().length <= 20)) {
-            res.status(422).send('A senha deve conter no mínimo 6 caracteres e no máximo 20!')
-        }
-
-        senha = await bcrypt.hash(senha, 10)
-        const response = await Usuarios.update(
-            { senha },
-            { where: { usu_id } }
-        );
-
-        res.json(`Linhas alteradas: ${response}`)
-    } catch (error) {
-        console.error('Erro ao definir senha:', error);
-        res.status(500).json({ erro: error.message });
-    }
-}
-
 async function verificaLogin(login, senha) {
     try {
         const response = await Usuarios.findOne({ where: { login, senha } });
@@ -122,8 +90,8 @@ async function login(req, res){
             const token = jwt.sign({ login }, process.env.API_KEY, { expiresIn: "1h" });
             return res.json({ token });
         }
-        
-        res.json()
+
+        return res.json()
     }
     catch (error) {
         console.error('Erro ao logar:', error);
@@ -131,13 +99,4 @@ async function login(req, res){
     }
 }
 
-async function teste(req, res) {
-    try{
-        return res.json("entrou")
-    }
-    catch{
-        res.status(500).json({ erro: error.message });
-    }
-}
-
-export default { list, select, create, update, del, definirSenha, login, teste };
+export default { list, select, create, update, del, login };
